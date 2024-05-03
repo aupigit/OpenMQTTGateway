@@ -26,6 +26,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "User_config.h"
+#include "config_LORA.h"
 
 #ifdef ZgatewayLORA
 

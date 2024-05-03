@@ -23,6 +23,8 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <Arduino.h>
+#include <ArduinoJson.h>
 #ifndef config_LORA_h
 #define config_LORA_h
 
@@ -38,10 +40,10 @@ extern void MQTTtoLORA(char* topicOri, JsonObject& RFdata);
 
 //Default parameters used when the parameters are not set in the json data
 #ifndef LORA_BAND
-#  define LORA_BAND 868E6
+#  define LORA_BAND 915E6
 #endif
 #ifndef LORA_SIGNAL_BANDWIDTH
-#  define LORA_SIGNAL_BANDWIDTH 125E3
+#  define LORA_SIGNAL_BANDWIDTH 125E6
 #endif
 #ifndef LORA_TX_POWER
 #  define LORA_TX_POWER 14
@@ -75,7 +77,7 @@ extern void MQTTtoLORA(char* topicOri, JsonObject& RFdata);
 //TTGO LORA BOARD ESP32 PIN DEFINITION
 
 #ifndef LORA_SCK
-#  define LORA_SCK 5 // GPIO5  -- SX1278's SCK
+#  define LORA_SCK 18 // GPIO5  -- SX1278's SCK
 #endif
 
 #ifndef LORA_MISO
@@ -83,19 +85,19 @@ extern void MQTTtoLORA(char* topicOri, JsonObject& RFdata);
 #endif
 
 #ifndef LORA_MOSI
-#  define LORA_MOSI 27 // GPIO27 -- SX1278's MOSI
+#  define LORA_MOSI 23 // GPIO27 -- SX1278's MOSI
 #endif
 
 #ifndef LORA_SS
-#  define LORA_SS 18 // GPIO18 -- SX1278's CS
+#  define LORA_SS 14 // GPIO18 -- SX1278's CS
 #endif
 
 #ifndef LORA_RST
-#  define LORA_RST 14 // GPIO14 -- SX1278's RESET
+#  define LORA_RST 33 // GPIO14 -- SX1278's RESET
 #endif
 
 #ifndef LORA_DI0
-#  define LORA_DI0 26 // GPIO26 -- SX1278's IRQ(Interrupt Request)
+#  define LORA_DI0 32 // GPIO26 -- SX1278's IRQ(Interrupt Request)
 #endif
 
 struct LORAConfig_s {

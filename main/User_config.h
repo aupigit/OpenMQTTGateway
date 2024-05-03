@@ -1,30 +1,3 @@
-/*
-  OpenMQTTGateway  - ESP8266 or Arduino program for home automation
-
-   Act as a gateway between your 433mhz, infrared IR, BLE, LoRa signal and one interface like an MQTT broker
-   Send and receiving command by MQTT
-
-  This program enables to:
- - receive MQTT data from a topic and send signals corresponding to the received MQTT data
- - publish MQTT data to a different topic related to received signals
-
-    Copyright: (c)Florian ROBERT
-
-    This file is part of OpenMQTTGateway.
-
-    OpenMQTTGateway is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    OpenMQTTGateway is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
 #ifndef user_config_h
 #define user_config_h
 /*-------------------VERSION----------------------*/
@@ -57,11 +30,11 @@
 #  define Gateway_Name "OpenMQTTGateway"
 #endif
 #ifndef Gateway_Short_Name
-#  define Gateway_Short_Name "OMG"
+#  define Gateway_Short_Name "DASHFER_GW"
 #endif
 
 #ifndef Base_Topic
-#  define Base_Topic "home/"
+#  define Base_Topic "dashfer/"
 #endif
 
 /*-------------DEFINE YOUR NETWORK PARAMETERS BELOW----------------*/
@@ -159,13 +132,13 @@ const byte mac[] = {0xDE, 0xED, 0xBA, 0xFE, 0x54, 0x95}; //W5100 ethernet shield
 #endif
 
 #ifndef MQTT_USER
-#  define MQTT_USER "your_username"
+#  define MQTT_USER "admin"
 #endif
 #ifndef MQTT_PASS
-#  define MQTT_PASS "your_password"
+#  define MQTT_PASS "admin"
 #endif
 #ifndef MQTT_SERVER
-#  define MQTT_SERVER "192.168.1.17"
+#  define MQTT_SERVER "172.16.1.124"
 #endif
 #ifndef MQTT_PORT
 #  define MQTT_PORT "1883"
@@ -198,7 +171,7 @@ const char* certificate PROGMEM = R"EOF("
 #  define ATTEMPTS_BEFORE_B  20 // Number of wifi connection attempts before going to B protocol
 
 #  ifndef NTP_SERVER
-#    define NTP_SERVER "pool.ntp.org"
+#    define NTP_SERVER "pool.ntp.br"
 #  endif
 
 #  ifndef MQTT_SECURE_DEFAULT
@@ -316,7 +289,7 @@ int lowpowermode = DEFAULT_LOW_POWER_MODE;
 
 //#define ZgatewayRF     "RF"       //ESP8266, Arduino, ESP32
 //#define ZgatewayIR     "IR"       //ESP8266, Arduino,         Sonoff RF Bridge
-//#define ZgatewayLORA   "LORA"       //ESP8266, Arduino, ESP32
+#define ZgatewayLORA   "LORA"       //ESP8266, Arduino, ESP32
 //#define ZgatewayPilight "Pilight" //ESP8266, Arduino, ESP32
 //#define ZgatewayWeatherStation "WeatherStation" //ESP8266, Arduino, ESP32
 //#define ZgatewayGFSunInverter "GFSunInverter"   //ESP32
@@ -402,7 +375,7 @@ int lowpowermode = DEFAULT_LOW_POWER_MODE;
 #  define ota_hostname Gateway_Name
 #endif
 #ifndef gw_password
-#  define gw_password ""
+#  define gw_password "12345678"
 #endif
 #ifndef ota_port
 #  define ota_port 8266
@@ -623,7 +596,7 @@ Adafruit_NeoPixel leds2(ANEOPIX_IND_NUM_LEDS, ANEOPIX_IND_DATA_GPIO2, ANEOPIX_IN
 #ifdef ESP8266
 //#  define TRIGGER_GPIO 14 // pin D5 as full reset button (long press >10s)
 #elif ESP32
-//#  define TRIGGER_GPIO 0 // boot button as full reset button (long press >10s)
+#  define TRIGGER_GPIO 25 // boot button as full reset button (long press >10s)
 //#  define NO_INT_TEMP_READING true //Define if we don't want internal temperature reading for the ESP32
 #endif
 
